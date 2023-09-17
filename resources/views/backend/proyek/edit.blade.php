@@ -59,12 +59,14 @@
                                     <input type="phone" class="form-control" name="telp" id="telp" value="{{ old('telp', $data->telp ?? '')}}">
                                 </div>
                             </div>
+                            @for ($i = 1; $i <= 10; $i++)
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Upload Photo</label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Upload Photo {{ $i }}</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="file" class="form-control" name="galeri" id="galeri" onchange="previewimage()">
+                                    <input type="file" class="form-control" name="galeri{{ $i }}" id="galeri{{ $i }}" onchange="previewimage()">
                                 </div>
                             </div>
+                            @endfor
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Lokasi</label>
                                 <div class="col-sm-12 col-md-7">
