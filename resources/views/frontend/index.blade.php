@@ -134,41 +134,51 @@
               </thead>
               <tbody>
               @foreach($proyek as $index => $item)
-                <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $item->produk->nama_produk }}</td>
-                    <td>{{ $item->nama_proyek }}</td>
-                    <td>{{ $item->nama_pelanggan }}</td>
-                    <td>{{ $item->lokasi }}</td>
-                    <td><img src="{{ asset('images/proyek/' . $item->galeri1) }}" alt="foto" widht="50" height="50" onclick="openModal();currentSlide(1)" class="hover-shadow"></td>
+<tr>
+    <td>{{ $index + 1 }}</td>
+    <td>{{ $item->produk->nama_produk }}</td>
+    <td>{{ $item->nama_proyek }}</td>
+    <td>{{ $item->nama_pelanggan }}</td>
+    <td>{{ $item->lokasi }}</td>
+    <td>
+        <img
+            src="{{ asset('images/proyek/' . $item->galeri1) }}"
+            alt="foto"
+            width="50"
+            height="50"
+            onclick="openModal({{ $index }}); currentSlide(1, {{ $index }})"
+            class="hover-shadow"
+        >
+    </td>
+</tr>
 
-                </tr>
-                <div id="myModal" class="modal">
-                    <span class="close cursor" onclick="closeModal()">&times;</span>
-                    <div class="modal-content">
+<div id="myModal{{ $index }}" class="modal">
+    <span class="close cursor" onclick="closeModal({{ $index }})">&times;</span>
+    <div class="modal-content">
+        @foreach(range(1, 10) as $slideIndex)
+        @if ($item->{'galeri' . $slideIndex})
+        <div class="mySlides{{ $index }}">
+            <div class="numbertext">{{ $slideIndex }} / 10</div>
+            <img
+                id="galeri{{ $index }}-{{ $slideIndex }}"
+                src="{{ asset('images/proyek/' . $item->{'galeri' . $slideIndex}) }}"
+                style="width:100%"
+            >
+        </div>
+        @endif
+        @endforeach
 
-                    @foreach(range(1, 10) as $index)
-                    @if ($item->{'galeri' . $index})
-                      <div class="mySlides">
-                        <div class="numbertext">{{ $index }} / 10</div>
-                        <img src="{{ asset('images/proyek/' . $item->{'galeri' . $index}) }}" style="width:100%">
-                      </div>
-                    @endif
-                    @endforeach
+        <!-- Next/previous controls -->
+        <a class="prev" onclick="plusSlides(-1, {{ $index }})">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, {{ $index }})">&#10095;</a>
+        <!-- Caption text -->
+        <div class="caption-container">
+            <p id="caption{{ $index }}"></p>
+        </div>
+    </div>
+</div>
+@endforeach
 
-                      <!-- Next/previous controls -->
-                      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                      <!-- Caption text -->
-                      <div class="caption-container">
-                        <p id="caption"></p>
-                      </div>
-
-                      <!-- Thumbnail image controls -->
-                      </div>
-                </div>
-
-              @endforeach
               </tbody>
           	</table>
           </div>
@@ -408,46 +418,94 @@
   </style>
 <script>
 // Open the Modal
-function openModal() {
-  document.getElementById("myModal").style.display = "block";
+// function openModal() {
+//   document.getElementById("myModal").style.display = "block";
+// }
+
+// // Close the Modal
+// function closeModal() {
+//     var modal = document.getElementById("myModal");
+//     modal.style.display = "none";
+// }
+
+// var slideIndex = 1;
+// showSlides(slideIndex);
+
+// // Next/previous controls
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
+
+// // Thumbnail image controls
+// function currentSlide(n) {
+//   showSlides(slideIndex = n);
+// }
+
+// function showSlides(n) {
+//   var i;
+//   var slides = document.getElementsByClassName("mySlides");
+//   var dots = document.getElementsByClassName("demo");
+//   var captionText = document.getElementById("caption");
+//   if (n > slides.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = slides.length}
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+//   for (i = 0; i < dots.length; i++) {
+//     dots[i].className = dots[i].className.replace(" active", "");
+//   }
+//   slides[slideIndex-1].style.display = "block";
+//   dots[slideIndex-1].className += " active";
+//   captionText.innerHTML = dots[slideIndex-1].alt;
+// }
+// Fungsi untuk membuka modal
+function openModal(index) {
+    document.getElementById('myModal' + index).style.display = 'block';
 }
 
-// Close the Modal
-function closeModal() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
+// Fungsi untuk menutup modal
+function closeModal(index) {
+    document.getElementById('myModal' + index).style.display = 'none';
 }
 
-var slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+// Fungsi untuk menggeser gambar dalam galeri
+function plusSlides(n, index) {
+    showSlides(slideIndex[index] += n, index);
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+// Fungsi untuk menampilkan gambar tertentu dalam galeri
+function currentSlide(n, index) {
+    showSlides(slideIndex[index] = n, index);
 }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
+// Inisialisasi indeks slide untuk setiap galeri
+var slideIndex = [];
+
+// Fungsi untuk menampilkan gambar pada indeks tertentu dalam galeri
+function showSlides(n, index) {
+    var i;
+    var slides = document.getElementsByClassName('mySlides' + index);
+    var captionText = document.getElementById('caption' + index);
+
+    if (n > slides.length) {
+        slideIndex[index] = 1;
+    }
+    if (n < 1) {
+        slideIndex[index] = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
+    slides[slideIndex[index] - 1].style.display = 'block';
+    captionText.innerHTML = slides[slideIndex[index] - 1].getElementsByTagName('img')[0].alt;
 }
+
+// Menampilkan gambar pertama pada setiap galeri saat modal pertama kali dibuka
+@foreach($proyek as $index => $item)
+showSlides(1, {{ $index }});
+@endforeach
+
+
 </script>
 
 </body>
