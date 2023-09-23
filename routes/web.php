@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PortofolioController;
 use App\Http\Controllers\Backend\ProyekController;
 use App\Http\Controllers\Backend\SmsController;
 use App\Http\Controllers\Backend\UsersController;
+use App\Http\Controllers\WAgatewayController;
 
 
 /*
@@ -27,6 +28,7 @@ use App\Http\Controllers\Backend\UsersController;
 //     return view('welcome');
 // });
 Route::get('/',[HomeController::class,'index'])->name('home');
+// Route::get('/Wa', [WAgatewayController::class,'sendWA']);
 // Route::get('/sendsms',[SmsController::class,'sendsms']);
 Route::get('/login', [LoginController::class,'login'])->name('login');
 Route::post('/login-act',[LoginController::class,'actlogin'])->name('proses.login');

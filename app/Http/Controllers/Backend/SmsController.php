@@ -111,24 +111,35 @@ class SmsController extends Controller
     // }
 
     public function sendSMS(Request $request)
-    {
-        $sid = getenv("TWILIO_SID");
-        $token = getenv("TWILIO_TOKEN");
-        $phone = getenv("TWILIO_PHONE");
-    
-        // Inisialisasi klien Twilio
-        $twilio = new Client($sid, $token);
-        
+    {   
+        $token = "isi dengan api"; // Tambahkan tanda koma di sini
         $nomorPenerima = $request->input('penerima'); 
-    
         $body = $request->input('pesan');
-    
-        // Kirim SMS menggunakan Twilio dengan body dari request
-        $message = $twilio->messages->create($nomorPenerima, [
-            "body" => $body,
-            "from" => $phone,
-        ]);
-    
+
+        $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => http_build_query(array(
+                'target' => $nomorPenerima,
+                'message' => $body,
+            )),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: ' . $token,
+            ),
+        ));
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        
         $data = new smsGateway;
         $data->proyek_id = $request->input('proyek_id');
         $data ->tanggal = now();
@@ -136,8 +147,10 @@ class SmsController extends Controller
         $data->penerima = $nomorPenerima;
         $data->save();
 
-        // return $data;
-        return redirect('/sms');
+        // return $response;
+        return redirect('/sms')->with('success','Pesan Berhasil Terkirim');
 
     }
+
+
 }
