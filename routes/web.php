@@ -70,6 +70,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin,superadmin']], functio
         Route::get('/proyek/{id}/destroy',[ProyekController::class,'destroy']);
         Route::get('/proyek/{id}/edit',[ProyekController::class,'edit']);
         Route::post('/proyek/{id}/update',[ProyekController::class,'update']);
+        Route::get('/cetak-proyek', [ProyekController::class,'cetak_pdf'])->name('cetak.proyek');
     
         //sms
         Route::get('/sms',[SmsController::class,'index'])->name('sms.index');

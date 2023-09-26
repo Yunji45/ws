@@ -11,6 +11,7 @@ use ErrorException;
 use Illuminate\Support\Facades\Session;
 use Storage;
 use Auth;
+use PDF;
 
 class ProyekController extends Controller
 {
@@ -192,5 +193,13 @@ class ProyekController extends Controller
         $data =proyek::find($id);
         $data ->delete();
         return redirect ('/proyek');
+    }
+
+    public function cetak_pdf()
+    {
+        $proyek = proyek::all();
+    
+        $pdf = PDF::loadview('backend.proyek.download',['proyek'=>$proyek]);
+        return $pdf->download('laporan-proyek-pdf');
     }
 }

@@ -20,6 +20,7 @@
                     <div class="section-title">Tabel {{$title}}</div>
                       <div class="buttons">
                         <a href="{{route('proyek.create')}}" class="btn btn-primary" >Tambah {{$title}}</a>
+                        <a href="{{route('cetak.proyek')}}" class="btn btn-success" target="_blank">Cetak</a>
                       </div>
                     <div class="table-responsive">
                         <table class="table table-sm table-white">
