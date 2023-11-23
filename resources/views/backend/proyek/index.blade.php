@@ -26,38 +26,37 @@
                         <table class="table table-sm table-white">
                           <thead>
                             <tr>
-                              <th scope="col">No</th>
-                              <th scope="col">Produk</th>
-                              <th scope="col">Proyek</th>
-                              <th scope="col">Pelanggan</th>
-                              <th scope="col">No.telp</th>
-                              <th scope="col">Lokasi</th>
-                              <th scope="col">Status</th>
-                              <th scope="col">Galeri</th>
-                              <th scope="col">Action</th>
+                              <th scope="col" class="text-center">No</th>
+                              <th scope="col" class="text-center">Produk</th>
+                              <th scope="col" class="text-center">Proyek</th>
+                              <th scope="col" class="text-center">Pelanggan</th>
+                              <th scope="col" class="text-center">No.telp</th>
+                              <th scope="col" class="text-center">Lokasi</th>
+                              <th scope="col" class="text-center">Status</th>
+                              <th scope="col" class="text-center">Galeri</th>
+                              <th scope="col" class="text-center">Action</th>
                             </tr>
                           </thead>
                           <tbody>
                           @php $no =1; @endphp @foreach ($data as $item)
                           <tr>
-                                <td>{{$no++}}</td>
-                                <td>{{$item->produk->nama_produk}}</td>
-                                <td>{{$item->nama_proyek}}</td>
-                                <td>{{$item->nama_pelanggan}}</td>
-                                <td>{{$item->telp}}</td>
-                                <td>{{$item->lokasi}}</td>
-                                <td>{{$item->status}}</td>
-                                <td><img src="{{ asset('images/proyek/' . $item->galeri) }}" alt="foto" widht="50" height="30"></td>
-                                <td>
+                                <td class="text-center">{{$no++}}</td>
+                                <td class="text-center">{{$item->produk->nama_produk}}</td>
+                                <td class="text-center">{{$item->nama_proyek}}</td>
+                                <td class="text-center">{{$item->nama_pelanggan}}</td>
+                                <td class="text-center">{{$item->telp}}</td>
+                                <td class="text-center">{{$item->lokasi}}</td>
+                                <td class="text-center">{{$item->status}}</td>
+                                <td class="text-center"><img src="{{ asset('images/proyek/' . $item->galeri) }}" alt="foto" widht="50" height="30"></td>
+                                <td class="text-center">
                                     <div class="btn-group mb-3" role="group" aria-label="Basic example">
-                                        <a href="/proyek/ {{$item->id}} /destroy" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fas fa-trash-alt"></i></a>
-                                        <a href="/proyek/ {{$item->id}} /edit" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                        <a href="/proyek/ {{$item->id}} /destroy" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                        <a href="/proyek/ {{$item->id}} /edit" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
+                                        <a href="{{route('detail.proyek', $item->id)}}" class="btn btn-info"><i class="far fa-eye"></i> Detail</a>
+                                        <a href="" class="btn btn-success"><i class="far fa-download"></i> Unduh</a>
                                         <!-- <a  class="btn btn-success"><i class="fas fa-eye"></i></a> -->
                                     </div>
-                                        
                                 </td>
-                                
-                                
                             </tr>
                             @endforeach
 

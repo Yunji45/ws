@@ -19,6 +19,11 @@ class proyek extends Model
         'lokasi',
         'galeri',
         'status',
+        'harga_jual',
+        'modal',
+        'keuntungan',
+        'detail',
+        'bar_progress',
     ];
 
     public function user()

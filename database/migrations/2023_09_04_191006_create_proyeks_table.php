@@ -23,6 +23,11 @@ class CreateProyeksTable extends Migration
             $table->string('nama_pelanggan')->nullable();
             $table->string('telp')->nullable();
             $table->string('lokasi')->nullable();
+            $table->integer('harga_jual')->nullable();
+            $table->integer('modal')->nullable();
+            $table->integer('keuntungan')->nullable();
+            $table->string('detail')->nullable();
+            $table->integer('bar_progress')->nullable();
             $table->enum('status',['onproses','finish'])->nullable();
             $table->string('galeri1')->nullable();
             $table->string('galeri2')->nullable();

@@ -90,6 +90,12 @@ class ProyekController extends Controller
             $proyek->lokasi = $request->input('lokasi');
             $proyek->status = $request->input('status');
 
+            $proyek->modal = $request->modal;
+            $proyek->harga_jual = $request->harga_jual;
+            $proyek->keuntungan = $request->harga_jual - $request->modal;
+            $proyek->detail = null;
+            $proyek->bar_progress = $request->bar_progress;
+
             // Loop untuk mengunggah gambar ke 10 kolom galeri
             for ($i = 1; $i <= 10; $i++) {
                 $kolom_galeri = 'galeri' . $i;
@@ -158,6 +164,12 @@ class ProyekController extends Controller
             $proyek->lokasi = $request->input('lokasi');
             $proyek->status = $request->input('status');
 
+            $proyek->modal = $request->modal;
+            $proyek->harga_jual = $request->harga_jual;
+            $proyek->keuntungan = $request->harga_jual - $request->modal;
+            $proyek->detail = null;
+            $proyek->bar_progress = $request->bar_progress;
+
             // Loop untuk mengunggah gambar ke 10 kolom galeri
             for ($i = 1; $i <= 10; $i++) {
                 $kolom_galeri = 'galeri' . $i;
@@ -201,5 +213,13 @@ class ProyekController extends Controller
     
         $pdf = PDF::loadview('backend.proyek.download',['proyek'=>$proyek]);
         return $pdf->download('laporan-proyek-pdf');
+    }
+
+    public function detail($id)
+    {
+        $title = 'Detail Proyek';
+        $data = proyek::find($id);
+        // return $title;
+        return view ('backend.proyek.detail',compact('title', 'data'));
     }
 }

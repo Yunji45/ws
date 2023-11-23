@@ -71,6 +71,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin,superadmin']], functio
         Route::get('/proyek/{id}/edit',[ProyekController::class,'edit']);
         Route::post('/proyek/{id}/update',[ProyekController::class,'update']);
         Route::get('/cetak-proyek', [ProyekController::class,'cetak_pdf'])->name('cetak.proyek');
+        Route::get('/proyek-detail/{id}',[ProyekController::class,'detail'])->name('detail.proyek');
     
         //sms
         Route::get('/sms',[SmsController::class,'index'])->name('sms.index');
