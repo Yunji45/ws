@@ -28,6 +28,7 @@ use App\Http\Controllers\WAgatewayController;
 //     return view('welcome');
 // });
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/proyek',[HomeController::class,'proyek'])->name('proyek');
 // Route::get('/Wa', [WAgatewayController::class,'sendWA']);
 // Route::get('/sendsms',[SmsController::class,'sendsms']);
 Route::get('/login', [LoginController::class,'login'])->name('login');
@@ -72,6 +73,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin,superadmin']], functio
         Route::post('/proyek/{id}/update',[ProyekController::class,'update']);
         Route::get('/cetak-proyek', [ProyekController::class,'cetak_pdf'])->name('cetak.proyek');
         Route::get('/proyek-detail/{id}',[ProyekController::class,'detail'])->name('detail.proyek');
+        Route::get('/cetak-per-proyek/{id}', [ProyekController::class,'unduh'])->name('cetak.per.proyek');
     
         //sms
         Route::get('/sms',[SmsController::class,'index'])->name('sms.index');

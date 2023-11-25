@@ -19,4 +19,10 @@ class HomeController extends Controller
         $proyek=proyek::all();
         return view('frontend.index',compact('slide','produk','porto','proyek'));
     }
+
+    public function proyek()
+    {
+        $proyek=proyek::all();
+        return view('frontend.proyek',compact('proyek'));
+    }
 }

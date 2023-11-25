@@ -218,8 +218,16 @@ class ProyekController extends Controller
     public function detail($id)
     {
         $title = 'Detail Proyek';
+        $type = 'fitur';
         $data = proyek::find($id);
-        // return $title;
-        return view ('backend.proyek.detail',compact('title', 'data'));
+        // return $data;
+        return view ('backend.proyek.detail',compact('title', 'data','type'));
+    }
+
+    public function unduh($id)
+    {
+        $data = proyek::find($id);
+        $pdf = PDF::loadview('backend.proyek.unduh',['data'=>$data]);
+        return $pdf->download('laporan-per-proyek-pdf');
     }
 }

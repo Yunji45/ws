@@ -53,7 +53,7 @@
                                         <a href="/proyek/ {{$item->id}} /destroy" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fas fa-trash-alt"></i> Delete</a>
                                         <a href="/proyek/ {{$item->id}} /edit" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
                                         <a href="{{route('detail.proyek', $item->id)}}" class="btn btn-info"><i class="far fa-eye"></i> Detail</a>
-                                        <a href="" class="btn btn-success"><i class="far fa-download"></i> Unduh</a>
+                                        <a href="{{route('cetak.per.proyek' ,$item->id)}}" class="btn btn-success"><i class="far fa-download"></i> Unduh</a>
                                         <!-- <a  class="btn btn-success"><i class="fas fa-eye"></i></a> -->
                                     </div>
                                 </td>
