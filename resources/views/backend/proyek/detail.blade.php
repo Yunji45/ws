@@ -13,25 +13,32 @@
     </div>
 
     <section class="product-container">
-        <!-- left side -->
-        <div class="img-card">
-            <img src="{{ asset('images/proyek/' . $data->galeri1) }}" alt="" id="featured-image">
-            <!-- small img -->
-            <div class="small-Card">
-                <img src="{{ asset('images/proyek/' . $data->galeri2) }}" alt="" class="small-Img">
-                <img src="{{ asset('images/proyek/' . $data->galeri3) }}" alt="" class="small-Img">
-                <img src="{{ asset('images/proyek/' . $data->galeri4) }}" alt="" class="small-Img">
-                <img src="{{ asset('images/proyek/' . $data->galeri5) }}" alt="" class="small-Img">
-                <img src="{{ asset('images/proyek/' . $data->galeri6) }}" alt="" class="small-Img">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="img-card">
+                        <img src="{{ asset('images/proyek/' . $data->galeri1) }}" alt="" id="featured-image">
+                        <img src="{{ asset('images/proyek/' . $data->galeri2) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri3) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri4) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri5) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri6) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri7) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri8) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri9) }}" alt="" >
+                            <img src="{{ asset('images/proyek/' . $data->galeri10) }}" alt="" >
+                    </div>
+                </div>
             </div>
-            <div class="small-Card">
-                <img src="{{ asset('images/proyek/' . $data->galeri7) }}" alt="" class="small-Img">
-                <img src="{{ asset('images/proyek/' . $data->galeri8) }}" alt="" class="small-Img">
-                <img src="{{ asset('images/proyek/' . $data->galeri9) }}" alt="" class="small-Img">
-                <img src="{{ asset('images/proyek/' . $data->galeri10) }}" alt="" class="small-Img">
-            </div>
-
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
+
+        <!-- left side -->
+
         <!-- Right side -->
         <div class="product-info">
             <h3>{{$data ->nama_proyek}}</h3>
@@ -316,4 +323,59 @@ smallImgs[4].addEventListener('click', () => {
     smallImgs[4].classList.add('sm-card')
 })
 </script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        // Parameter opsional
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+<style>
+        /* Tambahkan gaya kustom Anda di sini */
+        .swiper-container {
+            width: 50%;
+            height: 50%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Tengahkan teks slide secara vertikal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Opsional: Tambahkan radius border ke gambar */
+        }
+        .product-info {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+    </style>
+
+
 @endsection

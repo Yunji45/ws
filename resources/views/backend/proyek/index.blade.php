@@ -9,6 +9,29 @@
               <div class="breadcrumb-item">{{$title}}</div>
             </div>
           </div>
+          <div class="section-header">
+            <a href="{{route('proyek.create')}}" class="btn btn-primary">
+              <i class="fa fa-plus">
+                  Add</i>
+          </a>
+
+          <a href=" {{route('cetak.proyek')}}" class="btn btn-danger">
+              <i class="fa fa-download">
+                  PDF</i>
+          </a>
+        <div class="section-header-breadcrumb">
+            <div class="input-group" style="width: 200px;">
+                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search By Proyek">
+                <div class="input-group-append">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
           <div class="section-body">
 
@@ -18,17 +41,14 @@
                 
                   <div class="card-body">
                     <div class="section-title">Tabel {{$title}}</div>
-                      <div class="buttons">
-                        <a href="{{route('proyek.create')}}" class="btn btn-primary" >Tambah {{$title}}</a>
-                        <a href="{{route('cetak.proyek')}}" class="btn btn-success" target="_blank">Cetak</a>
-                      </div>
+                      
                     <div class="table-responsive">
-                        <table class="table table-sm table-white">
+                        <table class="table table-sm table-white" id="myTable">
                           <thead>
                             <tr>
                               <th scope="col" class="text-center">No</th>
-                              <th scope="col" class="text-center">Produk</th>
                               <th scope="col" class="text-center">Proyek</th>
+                              <th scope="col" class="text-center">Produk</th>
                               <th scope="col" class="text-center">Pelanggan</th>
                               <th scope="col" class="text-center">No.telp</th>
                               <th scope="col" class="text-center">Lokasi</th>
@@ -40,9 +60,9 @@
                           <tbody>
                           @php $no =1; @endphp @foreach ($data as $item)
                           <tr>
-                                <td class="text-center">{{$no++}}</td>
-                                <td class="text-center">{{$item->produk->nama_produk}}</td>
+                                <td class="text-center">{{$no++}}.</td>
                                 <td class="text-center">{{$item->nama_proyek}}</td>
+                                <td class="text-center">{{$item->produk->nama_produk}}</td>
                                 <td class="text-center">{{$item->nama_pelanggan}}</td>
                                 <td class="text-center">{{$item->telp}}</td>
                                 <td class="text-center">{{$item->lokasi}}</td>
@@ -83,4 +103,27 @@
                 right: 10px;
             }
         </style>
+        <script>
+    function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Ganti angka 1 dengan indeks kolom yang sesuai
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+    }
+
+</script>
+
 @endsection
