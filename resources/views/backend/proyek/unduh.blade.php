@@ -18,24 +18,30 @@
 	<table class='table table-bordered'>
 		<thead>
 			<tr>
-				<th>No</th>
 				<th>Produk</th>
 				<th>Proyek</th>
 				<th>Pelanggan</th>
 				<th>Telepon</th>
 				<th>Lokasi</th>
                 <th>Status</th>
+				<th>Harga Jual</th>
+				<th>Modal</th>
+				<th>Laba</th>
+				<th>Deskripsi</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-                <td>1.</td>
 				<td>{{$data->produk->nama_produk}}</td>
 				<td>{{$data->nama_proyek}}</td>
 				<td>{{$data->nama_pelanggan}}</td>
 				<td>{{$data->telp}}</td>
 				<td>{{$data->lokasi}}</td>
                 <td>{{$data->status}}</td>
+				<td>Rp.{{ number_format($data->harga_jual, 0, ',', '.') }}</td>
+				<td>Rp.{{ number_format($data->modal, 0, ',', '.') }}</td>
+                <td>Rp.{{ number_format($data->keuntungan, 0, ',', '.') }}</td>
+                <td>{{$data->detail}}</td>
 			</tr>
 		</tbody>
 	</table>

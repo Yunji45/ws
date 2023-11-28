@@ -78,15 +78,19 @@
                 </div>
                 <div class="delivery">
                     <p>Harga Jual</p> 
-                    <p>Rp {{ number_format($data->harga_jual, 0, ',', '.') }}</p>
+                    <p>Rp.{{ number_format($data->harga_jual, 0, ',', '.') }}</p>
                 </div>
                 <div class="delivery">
                     <p>Modal</p> 
-                    <p>Rp {{ number_format($data->modal, 0, ',', '.') }}</p>
+                    <p>Rp.{{ number_format($data->modal, 0, ',', '.') }}</p>
                 </div>
                 <div class="delivery">
                     <p>Keuntungan</p> 
-                    <p>Rp {{ number_format($data->keuntungan, 0, ',', '.') }}</p>
+                    <p>Rp.{{ number_format($data->keuntungan, 0, ',', '.') }}</p>
+                </div>
+                <div class="delivery">
+                    <p>Deskripsi</p> 
+                    <p>{{$data ->detail}}</p>
                 </div>
             </div>
         </div>

@@ -93,7 +93,7 @@ class ProyekController extends Controller
             $proyek->modal = $request->modal;
             $proyek->harga_jual = $request->harga_jual;
             $proyek->keuntungan = $request->harga_jual - $request->modal;
-            $proyek->detail = null;
+            $proyek->detail = $request->detail;
             $proyek->bar_progress = $request->bar_progress;
 
             // Loop untuk mengunggah gambar ke 10 kolom galeri
@@ -167,7 +167,7 @@ class ProyekController extends Controller
             $proyek->modal = $request->modal;
             $proyek->harga_jual = $request->harga_jual;
             $proyek->keuntungan = $request->harga_jual - $request->modal;
-            $proyek->detail = null;
+            $proyek->detail = $request->detail;
             $proyek->bar_progress = $request->bar_progress;
 
             // Loop untuk mengunggah gambar ke 10 kolom galeri

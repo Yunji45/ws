@@ -91,6 +91,12 @@
                                     <input type="text" class="form-control" name="bar_progress" id="bar_progress" value="{{ old('bar_progress', $data->bar_progress ?? '')}}">
                                 </div>
                             </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <textarea class="form-control" name="detail" id="detail"></textarea>
+                                </div>
+                            </div>
 
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
