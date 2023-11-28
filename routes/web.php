@@ -28,7 +28,7 @@ use App\Http\Controllers\WAgatewayController;
 //     return view('welcome');
 // });
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/proyek',[HomeController::class,'proyek'])->name('proyek');
+Route::get('/dataproyek', [HomeController::class, 'proyek'])->name('frontend.proyek');
 // Route::get('/Wa', [WAgatewayController::class,'sendWA']);
 // Route::get('/sendsms',[SmsController::class,'sendsms']);
 Route::get('/login', [LoginController::class,'login'])->name('login');

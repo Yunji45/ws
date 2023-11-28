@@ -53,7 +53,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#slider">Home</a></li>
           <li><a class="nav-link scrollto" href="#product">Product</a></li>
-	        <li><a class="nav-link scrollto" href="#cta">Project</a></li>
+	        <li><a class="nav-link scrollto" href="{{route('frontend.proyek')}}">Project</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
           <li><a class="getstarted scrollto" href="{{route('login')}}">Login</a></li>
@@ -114,76 +114,6 @@
     </section><!-- End Product Section -->
 
     <!-- ======= Data Project Section ======= -->
-	<section id="cta" class="cta" style="padding-top: -100 px">
-    	  <div class="container" data-aos="fade-up">
-	    <div class="section-title" style="text-align:center; font-weight: bold">
-          	<h2><font color="white">DATA PROJECT</font></h2>
-            </div>
-	    
-          <div class="table-responsive" style="border-radius: 5px">
-            <table class="table table-sm table-white table-hover" style="text-align:center; ">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Produk</th>
-                  <th>Proyek</th>
-                  <th>Pelanggan</th>				
-                  <th>Lokasi</th>				
-                  <th>Galeri</th>			
-                </tr>
-              </thead>
-              <tbody>
-              @foreach($proyek as $index => $item)
-<tr>
-    <td>{{ $index + 1 }}</td>
-    <td>{{ $item->produk->nama_produk }}</td>
-    <td>{{ $item->nama_proyek }}</td>
-    <td>{{ $item->nama_pelanggan }}</td>
-    <td>{{ $item->lokasi }}</td>
-    <td>
-        <img
-            src="{{ asset('images/proyek/' . $item->galeri1) }}"
-            alt="foto"
-            width="50"
-            height="50"
-            onclick="openModal({{ $index }}); currentSlide(1, {{ $index }})"
-            class="hover-shadow"
-        >
-    </td>
-</tr>
-
-<div id="myModal{{ $index }}" class="modal">
-    <span class="close cursor" onclick="closeModal({{ $index }})">&times;</span>
-    <div class="modal-content">
-        @foreach(range(1, 10) as $slideIndex)
-        @if ($item->{'galeri' . $slideIndex})
-        <div class="mySlides{{ $index }}">
-            <div class="numbertext">{{ $slideIndex }} / 10</div>
-            <img
-                id="galeri{{ $index }}-{{ $slideIndex }}"
-                src="{{ asset('images/proyek/' . $item->{'galeri' . $slideIndex}) }}"
-                style="width:100%"
-            >
-        </div>
-        @endif
-        @endforeach
-
-        <!-- Next/previous controls -->
-        <a class="prev" onclick="plusSlides(-1, {{ $index }})">&#10094;</a>
-        <a class="next" onclick="plusSlides(1, {{ $index }})">&#10095;</a>
-        <!-- Caption text -->
-        <div class="caption-container">
-            <p id="caption{{ $index }}"></p>
-        </div>
-    </div>
-</div>
-@endforeach
-
-              </tbody>
-          	</table>
-          </div>
-      </div>
-    </section><!-- End Data Project Section -->
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">

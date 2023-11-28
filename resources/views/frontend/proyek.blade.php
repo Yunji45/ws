@@ -68,19 +68,19 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li>
-                            <a class="nav-link scrollto active" href="#slider">Home</a>
+                            <a class="nav-link scrollto active" href="{{route('home')}}">Home</a>
                         </li>
                         <li>
-                            <a class="nav-link scrollto" href="#product">Product</a>
+                            <a class="nav-link scrollto" href="{{route('home')}}">Product</a>
                         </li>
                         <li>
-                            <a class="nav-link scrollto" href="#cta">Project</a>
+                            <a class="nav-link scrollto" href="{{route('frontend.proyek')}}">Project</a>
                         </li>
                         <li>
-                            <a class="nav-link scrollto" href="#portfolio">Portfolio</a>
+                            <a class="nav-link scrollto" href="{{route('home')}}">Portfolio</a>
                         </li>
                         <li>
-                            <a class="nav-link scrollto" href="#footer">Contact</a>
+                            <a class="nav-link scrollto" href="{{route('home')}}">Contact</a>
                         </li>
                         <li>
                             <a class="getstarted scrollto" href="{{route('login')}}">Login</a>
@@ -166,24 +166,58 @@
           </div>
       </div>
     </section><!-- End Data Project Section --><!-- ======= Footer ======= -->
-<div class="container footer-bottom clearfix">
-<div class="copyright">
-&copy; Copyright
-<strong>
-    <span>WSLAS</span></strong>. All Rights Reserved
-</div>
-<div class="credits">
-<!-- All the links in the footer should remain intact. -->
-<!-- You can delete the links only if you purchased the pro version. -->
-<!-- Licensing information: https://bootstrapmade.com/license/ -->
-<!-- Purchase the pro version with working PHP/AJAX contact form:
-https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-Designed by
-<a href="https://bootstrapmade.com/">BootstrapMade</a>
-</div>
-</div>
-</footer>
-<!-- End Footer -->
+    <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+	<div class="section-title">
+          <h2>Contact</h2>
+        </div>
+		
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>WSLAS</h3>
+            <p>
+              Jl. Raya Pengasinan Rt 05/02 No.50 <br>
+              Kec.Sawangan 535022<br>
+              Kota Depok <br><br>
+              <strong>Phone:</strong> +62 857 xxxxxxxx<br>
+              <strong>Email:</strong> info@example.co<br>
+            </p>
+          </div>
+
+          <div class="col-lg-6 col-md-6 footer-contact">
+            <h3>Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.728126208661!2d106.7520698788424!3d-6.42896311736526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e9fc92129ffb%3A0x241dc42bf7f3fdfd!2sBengkel%20Las%20Mas%20Sumary!5e0!3m2!1sid!2sid!4v1693455643891!5m2!1sid!2sid" width="100%" height="250" style="border-radius:7%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>My Social Media</h4>
+            
+            <div class="social-links mt-3">
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>WSLAS</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
 
 <div id="preloader"></div>
 <a
