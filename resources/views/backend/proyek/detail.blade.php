@@ -4,43 +4,67 @@
     <div class="section-header">
         <h1>{{$title}}</h1>
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active">
-                <a href="{{route('proyek.index')}}">Dashboard</a>
-            </div>
-
             <div class="breadcrumb-item">{{$title}}</div>
         </div>
     </div>
 
-    <section class="product-container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="img-card">
-                        <img src="{{ asset('images/proyek/' . $data->galeri1) }}" alt="" id="featured-image">
-                        <img src="{{ asset('images/proyek/' . $data->galeri2) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri3) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri4) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri5) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri6) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri7) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri8) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri9) }}" alt="" >
-                            <img src="{{ asset('images/proyek/' . $data->galeri10) }}" alt="" >
-                    </div>
-                </div>
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-            <!-- Add Navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
 
-        <!-- left side -->
+    <div class="slideshow-container">
 
-        <!-- Right side -->
-        <div class="product-info">
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri1) }}" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri2) }}" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri3) }}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri4) }}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri5) }}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri6) }}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri7) }}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri8) }}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri9) }}" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="{{ asset('images/proyek/' . $data->galeri10) }}" style="width:100%">
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+
+      </div>
+      <br>
+
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+        <span class="dot" onclick="currentSlide(4)"></span> 
+        <span class="dot" onclick="currentSlide(5)"></span> 
+        <span class="dot" onclick="currentSlide(6)"></span> 
+        <span class="dot" onclick="currentSlide(7)"></span> 
+        <span class="dot" onclick="currentSlide(8)"></span> 
+        <span class="dot" onclick="currentSlide(9)"></span> 
+        <span class="dot" onclick="currentSlide(10)"></span> 
+
+      </div>
+
+    <div class="product-info">
             <h3>{{$data ->nama_proyek}}</h3>
             <h5>Harga Jual: {{'Rp.' . number_format(floatval($data->harga_jual), 0, ',', '.')}}</h5>
             <div>
@@ -94,7 +118,6 @@
                 </div>
             </div>
         </div>
-    </section>
 </div>
 </div>
 </div>
@@ -282,104 +305,130 @@ hr {
   }
 }
 </style>
-<script>
-    let featuedImg = document.getElementById('featured-image');
-let smallImgs = document.getElementsByClassName('small-Img');
-
-smallImgs[0].addEventListener('click', () => {
-    featuedImg.src = smallImgs[0].src;
-    smallImgs[0].classList.add('sm-card')
-    smallImgs[1].classList.remove('sm-card')
-    smallImgs[2].classList.remove('sm-card')
-    smallImgs[3].classList.remove('sm-card')
-    smallImgs[4].classList.remove('sm-card')
-})
-smallImgs[1].addEventListener('click', () => {
-    featuedImg.src = smallImgs[1].src;
-    smallImgs[0].classList.remove('sm-card')
-    smallImgs[1].classList.add('sm-card')
-    smallImgs[2].classList.remove('sm-card')
-    smallImgs[3].classList.remove('sm-card')
-    smallImgs[4].classList.remove('sm-card')
-})
-smallImgs[2].addEventListener('click', () => {
-    featuedImg.src = smallImgs[2].src;
-    smallImgs[0].classList.remove('sm-card')
-    smallImgs[1].classList.remove('sm-card')
-    smallImgs[2].classList.add('sm-card')
-    smallImgs[3].classList.remove('sm-card')
-    smallImgs[4].classList.remove('sm-card')
-})
-smallImgs[3].addEventListener('click', () => {
-    featuedImg.src = smallImgs[3].src;
-    smallImgs[0].classList.remove('sm-card')
-    smallImgs[1].classList.remove('sm-card')
-    smallImgs[2].classList.remove('sm-card')
-    smallImgs[3].classList.add('sm-card')
-    smallImgs[4].classList.remove('sm-card')
-})
-smallImgs[4].addEventListener('click', () => {
-    featuedImg.src = smallImgs[4].src;
-    smallImgs[0].classList.remove('sm-card')
-    smallImgs[1].classList.remove('sm-card')
-    smallImgs[2].classList.remove('sm-card')
-    smallImgs[3].classList.remove('sm-card')
-    smallImgs[4].classList.add('sm-card')
-})
-</script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        // Parameter opsional
-        slidesPerView: 1,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-</script>
 
 <style>
-        /* Tambahkan gaya kustom Anda di sini */
-        .swiper-container {
-            width: 50%;
-            height: 50%;
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
 
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            /* Tengahkan teks slide secara vertikal */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        slideIndex++;
+
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
         }
 
-        .img-card {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
 
-        .img-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px; /* Opsional: Tambahkan radius border ke gambar */
-        }
-        .product-info {
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
 
-    </style>
+        setTimeout(showSlides, 2000); // Ubah angka ini (dalam milidetik) sesuai dengan kebutuhan Anda
+    }
+</script>
+
+
 
 
 @endsection

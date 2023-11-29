@@ -102,6 +102,7 @@
     <script src="{{asset('stisla/dist/assets/js/custom.js')}}"></script>
     <!-- JS Libraies -->
   <script src="{{asset('stisla/dist/assets/modules/prism/prism.js')}}"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <!-- Page Specific JS File -->
 <script src="{{asset('stisla/dist/assets/js/page/bootstrap-modal.js')}}"></script>
