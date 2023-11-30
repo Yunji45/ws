@@ -27,7 +27,6 @@
 				<th>Harga Jual</th>
 				<th>Modal</th>
 				<th>Laba</th>
-				<th>Deskripsi</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,7 +40,6 @@
 				<td>Rp.{{ number_format($data->harga_jual, 0, ',', '.') }}</td>
 				<td>Rp.{{ number_format($data->modal, 0, ',', '.') }}</td>
                 <td>Rp.{{ number_format($data->keuntungan, 0, ',', '.') }}</td>
-                <td>{{$data->detail}}</td>
 			</tr>
 		</tbody>
 	</table>

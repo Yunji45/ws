@@ -25,6 +25,9 @@
 				<th>Telepon</th>
 				<th>Lokasi</th>
                 <th>Status</th>
+				<th>Harga Jual</th>
+				<th>Modal</th>
+				<th>Laba</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -38,8 +41,36 @@
 				<td>{{$p->telp}}</td>
 				<td>{{$p->lokasi}}</td>
                 <td>{{$p->status}}</td>
+				<td>Rp.{{ number_format($p->harga_jual, 0, ',', '.') }}</td>
+				<td>Rp.{{ number_format($p->modal, 0, ',', '.') }}</td>
+				<td>Rp.{{ number_format($p->keuntungan, 0, ',', '.') }}</td>
 			</tr>
+
 			@endforeach
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><strong>TOTAL JUAL</strong></td>
+				<td>Rp.{{ number_format($totaljual, 0, ',', '.') }}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><strong>TOTAL LABA</strong></td>
+				<td>Rp.{{ number_format($totallaba, 0, ',', '.') }}</td>
+			</tr>
 		</tbody>
 	</table>
  

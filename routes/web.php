@@ -36,7 +36,7 @@ Route::post('/login-act',[LoginController::class,'actlogin'])->name('proses.logi
 
 Route::group(['middleware' => ['web', 'auth', 'role:admin,superadmin']], function(){
     //role admin
-    Route::group(['role' => 'admin'], function(){
+    Route::group(['role' => 'admin,superadmin'], function(){
         Route::get('/home', [DashboardController::class,'index'])->name('home');
         Route::get('/logout',[LoginController::class,'logout'])->name('logout');
     

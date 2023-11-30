@@ -110,7 +110,9 @@
                   <th>Produk</th>
                   <th>Proyek</th>
                   <th>Pelanggan</th>				
-                  <th>Lokasi</th>				
+                  <th>Lokasi</th>	
+                  <th>Status</th>			
+                  <th>Progres</th>
                   <th>Galeri</th>			
                 </tr>
               </thead>
@@ -122,6 +124,12 @@
     <td>{{ $item->nama_proyek }}</td>
     <td>{{ $item->nama_pelanggan }}</td>
     <td>{{ $item->lokasi }}</td>
+    <td>{{ $item->status }}</td>
+    <td class="progress-bar bg-success" role="progressbar" aria-valuenow="{{ $item->bar_progress }}"
+    aria-valuemin="0" aria-valuemax="100" style="width: {{ $item->bar_progress }}%; height: 60px;">
+    {{ $item->bar_progress }}%
+    </td>
+
     <td>
         <img
             src="{{ asset('images/proyek/' . $item->galeri1) }}"

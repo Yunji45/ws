@@ -84,7 +84,7 @@ class ProyekController extends Controller
             $proyek->save();
             if($proyek)
             {
-                $token = "wKtY0G2r#VDU9WuXZjg_"; // Tambahkan tanda koma di sini
+                $token = "isi dengan APi"; // Tambahkan tanda koma di sini
                 $nomorPenerima = $request->input('telp'); 
                 $body = 'tes proyek';
         
@@ -196,7 +196,7 @@ class ProyekController extends Controller
             $proyek->save();
             if($proyek)
             {
-                $token = "wKtY0G2r#VDU9WuXZjg_"; // Tambahkan tanda koma di sini
+                $token = "isi dengan APi"; // Tambahkan tanda koma di sini
                 $nomorPenerima = $request->input('telp'); 
                 $body = 'tes proyek';
         
@@ -255,8 +255,9 @@ class ProyekController extends Controller
     public function cetak_pdf()
     {
         $proyek = proyek::all();
-    
-        $pdf = PDF::loadview('backend.proyek.download',['proyek'=>$proyek]);
+        $totaljual = $proyek->sum('harga_jual');
+        $totallaba = $proyek->sum('keuntungan');
+        $pdf = PDF::loadview('backend.proyek.download',['proyek'=>$proyek,'totaljual' => $totaljual,'totallaba' => $totallaba]);
         return $pdf->download('laporan-proyek-pdf');
     }
 

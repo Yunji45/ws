@@ -41,7 +41,6 @@
                     <span>Sms Gateway</span>
                 </a>
             </li>
-            @endif
             <li class="active">
                 <a class="nav-link" href="{{route('proyek.index')}}">
                     <i class="fas fa-chart-line"></i>
@@ -54,6 +53,46 @@
                     <span>Users</span>
                 </a>
             </li>
+            @endif
+            @if (auth()->user()->role == 'superadmin')
+            <li class="active">
+                <a class="nav-link" href="{{route('slide.index')}}">
+                    <i class="far fa-address-card"></i>
+                    <span>Slider</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="nav-link" href="{{route('produk.index')}}">
+                    <i class="far fa-folder-open"></i>
+                    <span>Produk</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="nav-link" href="{{route('porto.index')}}">
+                    <i class="fas fa-plane"></i>
+                    <span>Portofolio</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="nav-link" href="{{route('sms.index')}}">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Sms Gateway</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="nav-link" href="{{route('proyek.index')}}">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Data Proyek</span>
+                </a>
+            </li>
+            <li class="active">
+                <a class="nav-link" href="{{route('users.index')}}">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            @endif
+
 
         </ul>
 
