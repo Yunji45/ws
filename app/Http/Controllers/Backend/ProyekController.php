@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\proyek;
 use App\Models\produk;
 use App\Models\User;
+use App\Models\smsGateway;
 use ErrorException;
 use Illuminate\Support\Facades\Session;
 use Storage;
@@ -47,37 +48,6 @@ class ProyekController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     if ($request->hasFile('galeri') && $request->file('galeri')->isValid()) {
-    //         try {
-    //             $image = $request->file('galeri');
-    //             $nama = time() . "_" . $image->getClientOriginalName();
-    //             $tujuan_upload = public_path().'\images\proyek';
-    //             $image->move($tujuan_upload, $nama);
-    //             // $requestData["galeri"]= '/storage'.$nama;
-    //             $proyek = new proyek;
-    //             $proyek->produk_id = $request->input('produk_id');
-    //             $proyek->user_id = Auth::user()->id;
-    //             $proyek->nama_proyek = $request->input('nama_proyek');
-    //             $proyek->nama_pelanggan = $request->input('nama_pelanggan');
-    //             $proyek->telp = $request->input('telp');
-    //             $proyek->lokasi = $request->input('lokasi');
-    //             $proyek->status = $request->input('status');
-    //             $proyek->galeri = $nama;
-    //             $proyek->save();
-                
-    //             Session::flash('success', 'Data Tamu Berhasil ditambah!');
-    //             return redirect('/proyek');
-    //             // return $proyek;
-    //         } catch (Exception $e) {
-    //             throw new Exception($e->getMessage());
-    //         }
-    //     } else {
-    //         return "ubah galeri mu ke file png";
-    //     }
-
-    // }
     public function store(Request $request)
     {
         try {
@@ -112,6 +82,45 @@ class ProyekController extends Controller
             }
 
             $proyek->save();
+            $tes = $request->bar_progress;
+            if($tes == 100)
+            {
+                $token = "isi dengan api"; // Tambahkan tanda koma di sini
+                $nomorPenerima = $request->input('telp'); 
+                $body = 'tes proyek';
+        
+                $curl = curl_init();
+                
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://api.fonnte.com/send',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => http_build_query(array(
+                        'target' => $nomorPenerima,
+                        'message' => $body,
+                    )),
+                    CURLOPT_HTTPHEADER => array(
+                        'Authorization: ' . $token,
+                    ),
+                ));
+                
+                $response = curl_exec($curl);
+                
+                curl_close($curl);
+                
+                $data = new smsGateway;
+                $data->proyek_id = $proyek->id;
+                $data ->tanggal = now();
+                $data->pesan = $body;
+                $data->penerima = $nomorPenerima;
+                $data->save();        
+            }
+
 
             return redirect('/proyek')->with('success', 'Data Proyek berhasil ditambahkan');
         } catch (Exception $e) {
@@ -186,6 +195,44 @@ class ProyekController extends Controller
             }
 
             $proyek->save();
+            $tes = $request->bar_progress;
+            if($tes == 100)
+            {
+                $token = "isi dengan api"; // Tambahkan tanda koma di sini
+                $nomorPenerima = $request->input('telp'); 
+                $body = 'tes proyek';
+        
+                $curl = curl_init();
+                
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://api.fonnte.com/send',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => http_build_query(array(
+                        'target' => $nomorPenerima,
+                        'message' => $body,
+                    )),
+                    CURLOPT_HTTPHEADER => array(
+                        'Authorization: ' . $token,
+                    ),
+                ));
+                
+                $response = curl_exec($curl);
+                
+                curl_close($curl);
+                
+                $data = new smsGateway;
+                $data->proyek_id = $proyek->id;
+                $data ->tanggal = now();
+                $data->pesan = $body;
+                $data->penerima = $nomorPenerima;
+                $data->save();        
+            }
 
             return redirect('/proyek')->with('success', 'Data Proyek berhasil ditambahkan');
         } catch (Exception $e) {
