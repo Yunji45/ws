@@ -82,10 +82,9 @@ class ProyekController extends Controller
             }
 
             $proyek->save();
-            $tes = $request->bar_progress;
-            if($tes == 100)
+            if($proyek)
             {
-                $token = "isi dengan api"; // Tambahkan tanda koma di sini
+                $token = "wKtY0G2r#VDU9WuXZjg_"; // Tambahkan tanda koma di sini
                 $nomorPenerima = $request->input('telp'); 
                 $body = 'tes proyek';
         
@@ -195,10 +194,9 @@ class ProyekController extends Controller
             }
 
             $proyek->save();
-            $tes = $request->bar_progress;
-            if($tes == 100)
+            if($proyek)
             {
-                $token = "isi dengan api"; // Tambahkan tanda koma di sini
+                $token = "wKtY0G2r#VDU9WuXZjg_"; // Tambahkan tanda koma di sini
                 $nomorPenerima = $request->input('telp'); 
                 $body = 'tes proyek';
         
