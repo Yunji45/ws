@@ -7,75 +7,30 @@
             <div class="breadcrumb-item">{{$title}}</div>
         </div>
     </div>
-
-
-    <div class="slideshow-container">
-
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri1) }}" style="width:100%">
-      </div>
-
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri2) }}" style="width:100%">
-      </div>
-
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri3) }}" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri4) }}" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri5) }}" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri6) }}" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri7) }}" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri8) }}" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri9) }}" style="width:100%">
-      </div>
-      <div class="mySlides fade">
-        <img src="{{ asset('images/proyek/' . $data->galeri10) }}" style="width:100%">
-      </div>
-
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <a class="next" onclick="plusSlides(1)">❯</a>
-
-      </div>
-      <br>
-
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span> 
-        <span class="dot" onclick="currentSlide(2)"></span> 
-        <span class="dot" onclick="currentSlide(3)"></span> 
-        <span class="dot" onclick="currentSlide(4)"></span> 
-        <span class="dot" onclick="currentSlide(5)"></span> 
-        <span class="dot" onclick="currentSlide(6)"></span> 
-        <span class="dot" onclick="currentSlide(7)"></span> 
-        <span class="dot" onclick="currentSlide(8)"></span> 
-        <span class="dot" onclick="currentSlide(9)"></span> 
-        <span class="dot" onclick="currentSlide(10)"></span> 
-
-      </div>
-
-    <div class="product-info">
-            <h3>{{$data ->nama_proyek}}</h3>
+    <section class="product-container">
+        <!-- left side -->
+        <div class="img-card">
+        <img src="{{ asset('images/proyek/' . $data->galeri1) }}" alt="" id="featured-image">
+            <!-- small img -->
+            <div class="small-Card">
+                <img src="{{ asset('images/proyek/' . $data->galeri2) }}" alt="" class="small-Img">
+                <img src="{{ asset('images/proyek/' . $data->galeri3) }}" alt="" class="small-Img">
+                <img src="{{ asset('images/proyek/' . $data->galeri4) }}" alt="" class="small-Img">
+                <img src="{{ asset('images/proyek/' . $data->galeri5) }}" alt="" class="small-Img">
+                <img src="{{ asset('images/proyek/' . $data->galeri6) }}" alt="" class="small-Img">
+            </div>
+            <div class="small-Card">
+                <img src="{{ asset('images/proyek/' . $data->galeri7) }}" alt="" class="small-Img">
+                <img src="{{ asset('images/proyek/' . $data->galeri8) }}" alt="" class="small-Img">
+                <img src="{{ asset('images/proyek/' . $data->galeri9) }}" alt="" class="small-Img">
+                <img src="{{ asset('images/proyek/' . $data->galeri10) }}" alt="" class="small-Img">
+            </div>
+        </div>
+        <!-- Right side -->
+        <div class="product-info">
+            <h3>{{$data->nama_proyek}}</h3>
             <h5>Harga Jual: {{'Rp.' . number_format(floatval($data->harga_jual), 0, ',', '.')}}</h5>
             <div>
-                <p>Status: {{$data->status}}</p>
-                <div class="progress">
-                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70"
-                        aria-valuemin="0" aria-valuemax="100" style="width: {{ $data->bar_progress }}%">
-                        {{ $data->bar_progress }}%
-                    </div>
-                </div>
-                <hr>
                 <div class="delivery">
                     <p>TYPE</p> <p>KETERANGAN</p>
                 </div>
@@ -102,26 +57,23 @@
                 </div>
                 <div class="delivery">
                     <p>Harga Jual</p> 
-                    <p>Rp.{{ number_format($data->harga_jual, 0, ',', '.') }}</p>
+                    <p>Rp {{ number_format($data->harga_jual, 0, ',', '.') }}</p>
                 </div>
                 <div class="delivery">
                     <p>Modal</p> 
-                    <p>Rp.{{ number_format($data->modal, 0, ',', '.') }}</p>
+                    <p>Rp {{ number_format($data->modal, 0, ',', '.') }}</p>
                 </div>
                 <div class="delivery">
                     <p>Keuntungan</p> 
-                    <p>Rp.{{ number_format($data->keuntungan, 0, ',', '.') }}</p>
+                    <p>Rp {{ number_format($data->keuntungan, 0, ',', '.') }}</p>
                 </div>
                 <div class="delivery">
                     <p>Deskripsi</p> 
-                    <p>{{$data ->detail}}</p>
+                    <p>{{$data->detail}}</p> 
                 </div>
             </div>
         </div>
-</div>
-</div>
-</div>
-</div>
+    </section>
 </section>
 <script>
     function previewimage()
