@@ -10,6 +10,8 @@
             </div>
           </div>
           <div class="section-header">
+          @if (auth()->user()->role == 'superadmin')
+
             <a href="{{route('proyek.create')}}" class="btn btn-primary">
               <i class="fa fa-plus">
                   Add</i>
@@ -19,6 +21,12 @@
               <i class="fa fa-download">
                   PDF</i>
           </a>
+          @elseif (auth()->user()->role == 'admin')
+          <a href="{{route('proyek.create')}}" class="btn btn-primary">
+              <i class="fa fa-plus">
+                  Add</i>
+          </a>
+          @endif
         <div class="section-header-breadcrumb">
             <div class="input-group" style="width: 200px;">
                 <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search By Proyek">
@@ -70,11 +78,17 @@
                                 <td class="text-center"><img src="{{ asset('images/proyek/' . $item->galeri) }}" alt="foto" widht="50" height="30"></td>
                                 <td class="text-center">
                                     <div class="btn-group mb-3" role="group" aria-label="Basic example">
+                                    @if (auth()->user()->role == 'superadmin')
+
                                         <a href="/proyek/ {{$item->id}} /destroy" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fas fa-trash-alt"></i> Delete</a>
                                         <a href="/proyek/ {{$item->id}} /edit" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
                                         <a href="{{route('detail.proyek', $item->id)}}" class="btn btn-info"><i class="far fa-eye"></i> Detail</a>
                                         <a href="{{route('cetak.per.proyek' ,$item->id)}}" class="btn btn-success"><i class="far fa-download"></i> Unduh</a>
-                                        <!-- <a  class="btn btn-success"><i class="fas fa-eye"></i></a> -->
+                                        @elseif (auth()->user()->role == 'admin')
+                                        <a href="/proyek/ {{$item->id}} /destroy" class="btn btn-danger" onclick="return confirm('Yakin akan dihapus?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                        <a href="/proyek/ {{$item->id}} /edit" class="btn btn-warning"><i class="far fa-edit"></i> Edit</a>
+                                        <a href="{{route('cetak.per.proyek' ,$item->id)}}" class="btn btn-success"><i class="far fa-download"></i> Unduh</a>
+                                    @endif
                                     </div>
                                 </td>
                             </tr>

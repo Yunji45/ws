@@ -118,29 +118,25 @@
               </thead>
               <tbody>
               @foreach($proyek as $index => $item)
-<tr>
-    <td>{{ $index + 1 }}</td>
-    <td>{{ $item->produk->nama_produk }}</td>
-    <td>{{ $item->nama_proyek }}</td>
-    <td>{{ $item->nama_pelanggan }}</td>
-    <td>{{ $item->lokasi }}</td>
-    <td>{{ $item->status }}</td>
-    <td class="progress-bar bg-success" role="progressbar" aria-valuenow="{{ $item->bar_progress }}"
-    aria-valuemin="0" aria-valuemax="100" style="width: {{ $item->bar_progress }}%; height: 60px;">
-    {{ $item->bar_progress }}%
-    </td>
-
-    <td>
-        <img
-            src="{{ asset('images/proyek/' . $item->galeri1) }}"
-            alt="foto"
-            width="50"
-            height="50"
-            onclick="openModal({{ $index }}); currentSlide(1, {{ $index }})"
-            class="hover-shadow"
-        >
-    </td>
-</tr>
+              <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ $item->produk->nama_produk }}</td>
+                  <td>{{ $item->nama_proyek }}</td>
+                  <td>{{ $item->nama_pelanggan }}</td>
+                  <td>{{ $item->lokasi }}</td>
+                  <td>{{ $item->status }}</td>
+                  <td>{{ $item->bar_progress }}%</td>
+                  <td>
+                      <img
+                          src="{{ asset('images/proyek/' . $item->galeri1) }}"
+                          alt="foto"
+                          width="50"
+                          height="50"
+                          onclick="openModal({{ $index }}); currentSlide(1, {{ $index }})"
+                          class="hover-shadow"
+                      >
+                  </td>
+              </tr>
 
 <div id="myModal{{ $index }}" class="modal">
     <span class="close cursor" onclick="closeModal({{ $index }})">&times;</span>
